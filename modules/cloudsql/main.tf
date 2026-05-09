@@ -16,7 +16,7 @@ resource "google_sql_database_instance" "this" {
     ip_configuration {
       ipv4_enabled    = false
       private_network = var.private_network
-      require_ssl     = true
+      require_ssl     = false
     }
 
     database_flags {
