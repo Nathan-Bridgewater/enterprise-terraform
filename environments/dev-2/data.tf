@@ -11,6 +11,6 @@ resource "google_storage_bucket" "uploads" {
   }
 
       versioning {
-        enabled = true
+        enabled = false
       }
     }
