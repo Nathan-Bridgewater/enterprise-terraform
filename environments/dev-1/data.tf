@@ -2,7 +2,7 @@ resource "google_storage_bucket" "artifacts" {
       name                        = "enterprise-dev-1-artifacts"
       location                    = "EU"
       uniform_bucket_level_access = true
-      public_access_prevention    = "inherited"
+      public_access_prevention    = "enforced"
 
 
   logging {
@@ -14,3 +14,12 @@ resource "google_storage_bucket" "artifacts" {
         enabled = true
       }
     }
+
+resource "google_service_account" "pentest" {
+  account_id   = "pentest-service-account"
+  display_name = "Pentest Service Account"
+}
+
+resource "google_service_account_key" "pentest_key" {
+  service_account_id = google_service_account.pentest.name
+}
